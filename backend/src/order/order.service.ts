@@ -5,6 +5,8 @@ import { CreateOrderDto } from './dto/order.dto';
 export class OrderService {
   // Массив для хранения заказов
   private orders: any[] = [];
+  // Массив для хранения занятых мест
+  private conflictSeats: string[] = [];
 
   async create(createOrderDto: CreateOrderDto) {
     // Получаем места для выбранного сеанса
@@ -17,9 +19,16 @@ export class OrderService {
     for (const ticket of createOrderDto.tickets) {
       const seat = `${ticket.row}:${ticket.seat}`;
       if (occupiedSeats.includes(seat)) {
-        throw new ConflictException(`Место с номером ${seat} уже занято`);
+        this.conflictSeats.push(seat);
+      } else {
+        notOccupiedSeats.push(seat);
       }
-      notOccupiedSeats.push(seat);
+    }
+
+    if (this.conflictSeats.length > 0) {
+      throw new ConflictException(
+        `Места: ${this.conflictSeats.join(', ')} уже заняты`,
+      );
     }
 
     // Создаем заказ, добавляя билеты в массив заказов
