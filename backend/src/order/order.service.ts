@@ -1,8 +1,4 @@
-import {
-  Injectable,
-  ConflictException,
-  BadRequestException,
-} from '@nestjs/common';
+import { Injectable, ConflictException } from '@nestjs/common';
 import { CreateOrderDto } from './dto/order.dto';
 
 @Injectable()
@@ -11,10 +7,6 @@ export class OrderService {
   private orders: any[] = [];
 
   async create(createOrderDto: CreateOrderDto) {
-    if (!createOrderDto.tickets || createOrderDto.tickets.length === 0) {
-      throw new BadRequestException('Не указаны билеты для заказа');
-    }
-
     // Получаем места для выбранного сеанса
     const occupiedSeats = await this.findOccupiedSeats(
       createOrderDto.tickets[0].session,
