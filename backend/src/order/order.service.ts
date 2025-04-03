@@ -5,29 +5,28 @@ import { CreateOrderDto } from './dto/order.dto';
 export class OrderService {
   // Массив для хранения заказов
   private orders: any[] = [];
-  // Массив для хранения занятых мест
-  private conflictSeats: string[] = [];
 
   async create(createOrderDto: CreateOrderDto) {
     // Получаем места для выбранного сеанса
     const occupiedSeats = await this.findOccupiedSeats(
       createOrderDto.tickets[0].session,
     );
-    const notOccupiedSeats = [];
+    const notOccupiedSeats: string[] = [];
+    const conflictSeats: string[] = [];
 
     // Проверяем занятость мест для каждого билета
     for (const ticket of createOrderDto.tickets) {
       const seat = `${ticket.row}:${ticket.seat}`;
       if (occupiedSeats.includes(seat)) {
-        this.conflictSeats.push(seat);
+        conflictSeats.push(seat);
       } else {
         notOccupiedSeats.push(seat);
       }
     }
 
-    if (this.conflictSeats.length > 0) {
+    if (conflictSeats.length > 0) {
       throw new ConflictException(
-        `Места: ${this.conflictSeats.join(', ')} уже заняты`,
+        `Места: ${conflictSeats.join(', ')} уже заняты`,
       );
     }
 
