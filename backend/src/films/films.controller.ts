@@ -9,8 +9,8 @@ export class FilmsController {
   async getFilms(): Promise<{ total: number; items: filmsDTO[] }> {
     return this.filmsService.findAll();
   }
-  @Get(':id')
-  find(@Param('id') id: string): string {
-    return `Этот метод вернёт данные фильма с id ${id}`;
+  @Get(':id/schedule')
+  find(@Param('id') id: string) {
+    return this.filmsService.findById(id);
   }
 }

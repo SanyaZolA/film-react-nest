@@ -8,18 +8,22 @@ import { Film, FilmSchema } from './films/shemas/films.schemas';
 import { FilmsController } from './films/films.controller';
 import { FilmsService } from './films/films.service';
 import { FilmsRepository } from './repository/films.repository';
+import { OrderController } from './order/order.controller';
+import { OrderService } from './order/order.service';
 
 @Module({
   imports: [
+    //загружаем переменные окружения
     ConfigModule.forRoot({
       isGlobal: true,
       cache: true,
-      envFilePath: '.env',
     }),
+    //загружаем статические файлы - путь и URL
     ServeStaticModule.forRoot({
       rootPath: path.join(__dirname, '..', 'public/content/afisha'),
       serveRoot: '/content/afisha',
     }),
+    //подключение к БД
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
@@ -27,9 +31,10 @@ import { FilmsRepository } from './repository/films.repository';
       }),
       inject: [ConfigService],
     }),
+    //регистрация схемы внутри модуля для доступа к ней в приложении
     MongooseModule.forFeature([{ name: Film.name, schema: FilmSchema }]),
   ],
-  controllers: [FilmsController],
-  providers: [configProvider, FilmsService, FilmsRepository],
+  controllers: [FilmsController, OrderController],
+  providers: [configProvider, FilmsService, FilmsRepository, OrderService],
 })
 export class AppModule {}

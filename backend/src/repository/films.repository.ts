@@ -10,11 +10,31 @@ export class FilmsRepository {
     @InjectModel(Film.name) private readonly filmModel: Model<Film>,
   ) {}
 
-  async findAll(): Promise<filmsDTO[]> {
-    return this.filmModel.find().exec() as unknown as filmsDTO[];
+  // Преобразование фильма в DTO
+  private toFilmDto(film: Film): filmsDTO {
+    return {
+      id: film.id,
+      rating: film.rating,
+      director: film.director,
+      tags: film.tags,
+      image: film.image,
+      cover: film.cover,
+      title: film.title,
+      about: film.about,
+      discription: film.discription,
+      schedule: film.schedule,
+    };
   }
 
+  // Получение всех фильмов из БД
+  async findAll(): Promise<filmsDTO[]> {
+    const films = await this.filmModel.find().exec();
+    return films.map(this.toFilmDto);
+  }
+
+  // Получение фильма по ID из БД
   async findById(id: string): Promise<filmsDTO | null> {
-    return (await this.filmModel.findOne({ id }).exec()) as unknown as filmsDTO;
+    const film = await this.filmModel.findOne({ id }).exec();
+    return film ? this.toFilmDto(film) : null; // Если фильм найден, преобразуем, если нет - возвращаем null
   }
 }
