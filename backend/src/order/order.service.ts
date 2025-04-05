@@ -1,12 +1,12 @@
 import { Injectable, ConflictException } from '@nestjs/common';
-import { CreateOrderDto } from './dto/order.dto';
+import { OrderDto } from './dto/order.dto';
 
 @Injectable()
 export class OrderService {
   // Массив для хранения заказов
-  private orders: any[] = [];
+  private orders: OrderDto[] = [];
 
-  async create(createOrderDto: CreateOrderDto) {
+  async create(createOrderDto: OrderDto) {
     // Получаем места для выбранного сеанса
     const occupiedSeats = await this.findOccupiedSeats(
       createOrderDto.tickets[0].session,

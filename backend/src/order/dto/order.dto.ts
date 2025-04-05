@@ -1,4 +1,4 @@
-export class CreateOrderDto {
+export class OrderDto {
   tickets: {
     film: string;
     session: string;
