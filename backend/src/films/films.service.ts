@@ -21,7 +21,6 @@ export class FilmsService {
     if (!films) {
       throw new NotFoundException(`Фильм с ID ${id} не найден`);
     }
-    console.log(films.schedule.length);
     return {
       total: films.schedule.length,
       items: films.schedule,
