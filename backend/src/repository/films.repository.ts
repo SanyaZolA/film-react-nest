@@ -3,12 +3,15 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Film } from '../films/entity/film.entity';
 import { filmsDTO } from '../films/dto/films.dto';
+import { Schedule } from 'src/films/entity/schedule.entity';
 
 @Injectable()
 export class FilmsRepository {
   constructor(
     @InjectRepository(Film)
     private readonly filmRepository: Repository<Film>,
+    @InjectRepository(Schedule)
+    private readonly scheduleRepository: Repository<Schedule>,
   ) {}
 
   private toFilmDto(film: Film): filmsDTO {
@@ -38,6 +41,43 @@ export class FilmsRepository {
       where: { id },
       relations: ['schedule'],
     });
-    return this.toFilmDto(film) as filmsDTO;
+    if (film) {
+      // Сортируем расписание по времени сеанса на уровне приложения
+      film.schedule = film.schedule.sort((a, b) =>
+        a.daytime.localeCompare(b.daytime),
+      );
+      return this.toFilmDto(film) as filmsDTO;
+    }
+    return null;
+  }
+
+  async addTaken(scheduleId: string, newSeats: string[]) {
+    const schedule = await this.scheduleRepository.findOne({
+      where: { id: scheduleId },
+    });
+
+    if (!schedule) {
+      throw new Error('Расписание не найдено');
+    }
+    const currentTaken = schedule.taken ? schedule.taken.split(',') : [];
+
+    const updated = Array.from(new Set([...currentTaken, ...newSeats]));
+    schedule.taken = updated.join(',');
+    await this.scheduleRepository.save(schedule);
+  }
+
+  async deleteTaken(scheduleId: string, newSeats: string[]) {
+    const schedule = await this.scheduleRepository.findOne({
+      where: { id: scheduleId },
+    });
+
+    if (!schedule) {
+      throw new Error('Расписание не найдено');
+    }
+    const currentTaken = schedule.taken ? schedule.taken.split(',') : [];
+
+    const updated = currentTaken.filter((seat) => !newSeats.includes(seat));
+    schedule.taken = updated.join(',');
+    await this.scheduleRepository.save(schedule);
   }
 }

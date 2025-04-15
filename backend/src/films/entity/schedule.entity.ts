@@ -13,24 +13,27 @@ export class Schedule {
   id: string;
 
   @ManyToOne(() => Film, (film) => film.schedule)
-  @JoinColumn({ name: 'film_id' })
+  @JoinColumn({ name: 'filmId' })
   film: Film;
 
-  @Column({ type: 'integer', nullable: true })
+  @Column({ type: 'integer' })
   hall: number;
 
-  @Column({ type: 'integer', nullable: true })
+  @Column({ type: 'integer' })
   seats: number;
 
-  @Column({ type: 'integer', nullable: true })
+  @Column({ type: 'integer' })
   price: number;
 
-  @Column({ type: 'text', nullable: true })
+  @Column({ type: 'text' })
   daytime: string;
 
-  @Column('text')
-  taken: string[];
+  @Column('text', { default: '' })
+  taken: string;
 
   @Column('integer')
   rows: number;
+
+  @Column('uuid')
+  filmId: string;
 }
