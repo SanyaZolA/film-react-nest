@@ -9,6 +9,6 @@ export class filmsDTO {
   cover: string;
   title: string;
   about: string;
-  discription: string;
+  description: string;
   schedule: filmsScheduleDTO[];
 }

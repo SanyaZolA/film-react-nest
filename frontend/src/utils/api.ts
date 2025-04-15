@@ -152,7 +152,6 @@ export class FilmAPI extends Api implements IFilmAPI {
      */
     async getFilms(): Promise<Movie[]> {
         const data = await this._get<ApiListResponse<Movie>>('/films');
-        console.log(data);
         return data.items.map((item) => ({
             ...item,
             image: this.cdn + item.image,

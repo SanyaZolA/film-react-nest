@@ -2,6 +2,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 
 export const configProvider = {
   imports: [
+    // добавляем в ConfigModule переменные окружения БД
     ConfigModule.forRoot({
       load: [
         () => ({
@@ -13,7 +14,9 @@ export const configProvider = {
       ],
     }),
   ],
+  //провайдер для получения параметров
   provide: 'CONFIG',
+  //получаем строки к БД в CONFIG
   useFactory: async (configService: ConfigService) => {
     return {
       database: {

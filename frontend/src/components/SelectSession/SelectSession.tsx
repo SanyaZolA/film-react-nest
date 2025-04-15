@@ -30,11 +30,13 @@ function groupSessions(data: ScheduleSession[]) {
 }
 
 function dayTimeKey(day: string, time: string) {
+    
     return [day, time].join(':');
 }
 
 export function SelectSession({ sessions, selected = null, onSelect }: SelectSessionProps) {
     const data = groupSessions(sessions);
+    console.log(data);
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const target = (e.nativeEvent as SubmitEvent).submitter as HTMLButtonElement;
