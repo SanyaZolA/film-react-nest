@@ -1,16 +1,16 @@
 import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Film } from '../films/shemas/films.schemas';
-import { Model } from 'mongoose';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Film } from '../films/entity/film.entity';
 import { filmsDTO } from '../films/dto/films.dto';
 
 @Injectable()
 export class FilmsRepository {
   constructor(
-    @InjectModel(Film.name) private readonly filmModel: Model<Film>,
+    @InjectRepository(Film)
+    private readonly filmRepository: Repository<Film>,
   ) {}
 
-  // Преобразование фильма в DTO
   private toFilmDto(film: Film): filmsDTO {
     return {
       id: film.id,
@@ -21,20 +21,23 @@ export class FilmsRepository {
       cover: film.cover,
       title: film.title,
       about: film.about,
-      discription: film.discription,
+      description: film.description,
       schedule: film.schedule,
     };
   }
 
   // Получение всех фильмов из БД
   async findAll(): Promise<filmsDTO[]> {
-    const films = await this.filmModel.find().exec();
-    return films.map(this.toFilmDto);
+    const films = await this.filmRepository.find();
+    return films.map(this.toFilmDto) as filmsDTO[];
   }
 
   // Получение фильма по ID из БД
   async findById(id: string): Promise<filmsDTO | null> {
-    const film = await this.filmModel.findOne({ id }).exec();
-    return film ? this.toFilmDto(film) : null; // Если фильм найден, преобразуем, если нет - возвращаем null
+    const film = await this.filmRepository.findOne({
+      where: { id },
+      relations: ['schedule'],
+    });
+    return this.toFilmDto(film) as filmsDTO;
   }
 }
