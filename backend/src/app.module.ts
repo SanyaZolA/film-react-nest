@@ -34,8 +34,7 @@ import { config } from './config';
       password: config.db.password,
       database: config.db.name,
       schema: config.db.schema,
-      entities: [Film, Schedule],
-      synchronize: true,
+      entities: [Film, Schedule]
     }),
     TypeOrmModule.forFeature([Film, Schedule]),
   ],
