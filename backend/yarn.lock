@@ -713,11 +713,6 @@
     tslib "2.8.1"
     uid "2.0.2"
 
-"@nestjs/mongoose@^11.0.3":
-  version "11.0.3"
-  resolved "http://npm.prakticum-team.ru/@nestjs/mongoose/-/mongoose-11.0.3.tgz"
-  integrity sha512-tg7bbKD4MnNMPaiDLXK/JUyTNQxIn3rNnI+oYU1HorLpNiR2E8vPraWVvfptpIj+zferpT6LkrHMvtqvuIKNPw==
-
 "@nestjs/platform-express@^10.0.0":
   version "10.4.15"
   resolved "http://npm.prakticum-team.ru/@nestjs/platform-express/-/platform-express-10.4.15.tgz"
@@ -729,7 +724,7 @@
     multer "1.4.4-lts.1"
     tslib "2.8.1"
 
-"@nestjs/schematics@^10.0.0", "@nestjs/schematics@^10.0.1":
+"@nestjs/schematics@^10.0.1":
   version "10.2.3"
   resolved "http://npm.prakticum-team.ru/@nestjs/schematics/-/schematics-10.2.3.tgz"
   integrity sha512-4e8gxaCk7DhBxVUly2PjYL4xC2ifDFexCqq1/u4TtivLGXotVk0wHdYuPYe1tHTHuR1lsOkRbfOCpkdTnigLVg==
@@ -876,32 +871,10 @@
   dependencies:
     "@babel/types" "^7.20.7"
 
-"@types/body-parser@*":
-  version "1.19.5"
-  resolved "http://npm.prakticum-team.ru/@types/body-parser/-/body-parser-1.19.5.tgz"
-  integrity sha512-fB3Zu92ucau0iQ0JMCFQE7b/dv8Ot07NI3KaZIkIUNXq82k4eBAqUaneXfleGY9JWskeS9y+u0nXMyspcuQrCg==
-  dependencies:
-    "@types/connect" "*"
-    "@types/node" "*"
-
-"@types/connect@*":
-  version "3.4.38"
-  resolved "http://npm.prakticum-team.ru/@types/connect/-/connect-3.4.38.tgz"
-  integrity sha512-K6uROf1LD88uDQqJCktA4yzL1YYAK6NgfsI0v/mTgyPKWsX1CnJ0XPSDhViejru1GcRkLWb8RlzFYJRqGUbaug==
-  dependencies:
-    "@types/node" "*"
-
 "@types/cookiejar@^2.1.5":
   version "2.1.5"
   resolved "http://npm.prakticum-team.ru/@types/cookiejar/-/cookiejar-2.1.5.tgz"
   integrity sha512-he+DHOWReW0nghN24E1WUqM0efK4kI9oTqDm6XmK8ZPe2djZ90BSNdGnIyCLzCPw7/pogPlGbzI2wHGGmi4O/Q==
-
-"@types/debug@^4.1.12":
-  version "4.1.12"
-  resolved "http://npm.prakticum-team.ru/@types/debug/-/debug-4.1.12.tgz"
-  integrity sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==
-  dependencies:
-    "@types/ms" "*"
 
 "@types/eslint-scope@^3.7.7":
   version "3.7.7"
@@ -924,37 +897,12 @@
   resolved "http://npm.prakticum-team.ru/@types/estree/-/estree-1.0.7.tgz"
   integrity sha512-w28IoSUCJpidD/TGviZwwMJckNESJZXFu7NBZ5YJ4mEUnNraUn9Pm8HSZm/jDF1pDWYKspWE7oVphigUPRakIQ==
 
-"@types/express-serve-static-core@^4.17.33":
-  version "4.19.6"
-  resolved "http://npm.prakticum-team.ru/@types/express-serve-static-core/-/express-serve-static-core-4.19.6.tgz"
-  integrity sha512-N4LZ2xG7DatVqhCZzOGb1Yi5lMbXSZcmdLDe9EzSndPV2HpWYWzRbaerl2n27irrm94EPpprqa8KpskPT085+A==
-  dependencies:
-    "@types/node" "*"
-    "@types/qs" "*"
-    "@types/range-parser" "*"
-    "@types/send" "*"
-
-"@types/express@^4.17.17":
-  version "4.17.21"
-  resolved "http://npm.prakticum-team.ru/@types/express/-/express-4.17.21.tgz"
-  integrity sha512-ejlPM315qwLpaQlQDTjPdsUFSc6ZsP4AN6AlWnogPjQ7CVi7PYF3YVz+CY3jE2pwYf7E/7HlDAN0rV2GxTG0HQ==
-  dependencies:
-    "@types/body-parser" "*"
-    "@types/express-serve-static-core" "^4.17.33"
-    "@types/qs" "*"
-    "@types/serve-static" "*"
-
 "@types/graceful-fs@^4.1.3":
   version "4.1.9"
   resolved "http://npm.prakticum-team.ru/@types/graceful-fs/-/graceful-fs-4.1.9.tgz"
   integrity sha512-olP3sd1qOEe5dXTSaFvQG+02VdRXcdytWLAZsAq1PecU8uqQAhkrnbli7DagjtXKW/Bl7YJbUsa8MPcuc8LHEQ==
   dependencies:
     "@types/node" "*"
-
-"@types/http-errors@*":
-  version "2.0.4"
-  resolved "http://npm.prakticum-team.ru/@types/http-errors/-/http-errors-2.0.4.tgz"
-  integrity sha512-D0CFMMtydbJAegzOyHjtiKPLlvnm3iTZyZRSZoLq2mRhDdmLfIWOCYPfQJ4cu2erKghU++QvjcUjp/5h7hESpA==
 
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0", "@types/istanbul-lib-coverage@^2.0.1":
   version "2.0.6"
@@ -975,14 +923,6 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jest@^29.5.2":
-  version "29.5.14"
-  resolved "http://npm.prakticum-team.ru/@types/jest/-/jest-29.5.14.tgz"
-  integrity sha512-ZN+4sdnLUbo8EVvVc2ao0GFW6oVrQRPn4K2lglySj7APvSrgzxHiNNK99us4WDMi57xxA2yggblIAMNhXOotLQ==
-  dependencies:
-    expect "^29.0.0"
-    pretty-format "^29.0.0"
-
 "@types/json-schema@*", "@types/json-schema@^7.0.12", "@types/json-schema@^7.0.8", "@types/json-schema@^7.0.9":
   version "7.0.15"
   resolved "http://npm.prakticum-team.ru/@types/json-schema/-/json-schema-7.0.15.tgz"
@@ -993,16 +933,6 @@
   resolved "http://npm.prakticum-team.ru/@types/methods/-/methods-1.1.4.tgz"
   integrity sha512-ymXWVrDiCxTBE3+RIrrP533E70eA+9qu7zdWoHuOmGujkYtzf4HQF96b8nwHLqhuf4ykX61IGRIB38CC6/sImQ==
 
-"@types/mime@^1":
-  version "1.3.5"
-  resolved "http://npm.prakticum-team.ru/@types/mime/-/mime-1.3.5.tgz"
-  integrity sha512-/pyBZWSLD2n0dcHE3hq8s8ZvcETHtEuF+3E7XVt0Ig2nvsVQXdghHVcEkIWjy9A0wKfTn97a/PSDYohKIlnP/w==
-
-"@types/ms@*":
-  version "2.1.0"
-  resolved "http://npm.prakticum-team.ru/@types/ms/-/ms-2.1.0.tgz"
-  integrity sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==
-
 "@types/node@*", "@types/node@^20.3.1":
   version "20.17.30"
   resolved "http://npm.prakticum-team.ru/@types/node/-/node-20.17.30.tgz"
@@ -1010,37 +940,10 @@
   dependencies:
     undici-types "~6.19.2"
 
-"@types/qs@*":
-  version "6.9.18"
-  resolved "http://npm.prakticum-team.ru/@types/qs/-/qs-6.9.18.tgz"
-  integrity sha512-kK7dgTYDyGqS+e2Q4aK9X3D7q234CIZ1Bv0q/7Z5IwRDoADNU81xXJK/YVyLbLTZCoIwUoDoffFeF+p/eIklAA==
-
-"@types/range-parser@*":
-  version "1.2.7"
-  resolved "http://npm.prakticum-team.ru/@types/range-parser/-/range-parser-1.2.7.tgz"
-  integrity sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==
-
 "@types/semver@^7.5.0":
   version "7.7.0"
   resolved "http://npm.prakticum-team.ru/@types/semver/-/semver-7.7.0.tgz"
   integrity sha512-k107IF4+Xr7UHjwDc7Cfd6PRQfbdkiRabXGRjo07b4WyPahFBZCZ1sE+BNxYIJPPg73UkfOsVOLwqVc/6ETrIA==
-
-"@types/send@*":
-  version "0.17.4"
-  resolved "http://npm.prakticum-team.ru/@types/send/-/send-0.17.4.tgz"
-  integrity sha512-x2EM6TJOybec7c52BX0ZspPodMsQUd5L6PRwOunVyVUhXiBSKf3AezDL8Dgvgt5o0UfKNfuA0eMLr2wLT4AiBA==
-  dependencies:
-    "@types/mime" "^1"
-    "@types/node" "*"
-
-"@types/serve-static@*":
-  version "1.15.7"
-  resolved "http://npm.prakticum-team.ru/@types/serve-static/-/serve-static-1.15.7.tgz"
-  integrity sha512-W8Ym+h8nhuRwaKPaDw34QUkwsGi6Rc4yYqvKFo5rm2FUEhCFbzVWrxXUxuKK8TASjWsysJY0nsmNCGhCOIsrOw==
-  dependencies:
-    "@types/http-errors" "*"
-    "@types/node" "*"
-    "@types/send" "*"
 
 "@types/stack-utils@^2.0.0":
   version "2.0.3"
@@ -1989,7 +1892,7 @@ dayjs@^1.11.13:
   resolved "http://npm.prakticum-team.ru/dayjs/-/dayjs-1.11.13.tgz"
   integrity sha512-oaMBel6gjolK862uaPQOVTA7q3TZhuSvuMQAAglQDOWYO9A91IrAOUJEyKVlqJlHE0vq5p5UXxzdPfMH/x6xNg==
 
-debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2, debug@^4.3.4, debug@^4.3.5, debug@^4.4.0, debug@4.x:
+debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2, debug@^4.3.4, debug@^4.4.0:
   version "4.4.0"
   resolved "http://npm.prakticum-team.ru/debug/-/debug-4.4.0.tgz"
   integrity sha512-6WTZ/IxCY/T6BALoZHaE4ctp9xm+Z5kY/pzYaCHRFeyVhojxlrm+46y68HA6hr0TcwEssoxNiDEUJQjfPZ/RYA==
@@ -2157,7 +2060,7 @@ encodeurl@~2.0.0:
   resolved "http://npm.prakticum-team.ru/encodeurl/-/encodeurl-2.0.0.tgz"
   integrity sha512-Q0n9HRi4m6JuGIV1eFlmvJB7ZEVxu93IrMyiMsGC0lrMJMWzRgx6WGquyfQgZVb31vhGgXnfmPNNXmxnOkRBrg==
 
-enhanced-resolve@^5.0.0, enhanced-resolve@^5.17.1, enhanced-resolve@^5.7.0:
+enhanced-resolve@^5.17.1, enhanced-resolve@^5.7.0:
   version "5.18.1"
   resolved "http://npm.prakticum-team.ru/enhanced-resolve/-/enhanced-resolve-5.18.1.tgz"
   integrity sha512-ZSW3ma5GkcQBIpwZTSRAI8N71Uuwgs93IezB7mf7R60tC8ZbJideoDNKjHn2O9KIlx6rkGTTEk1xUCK2E1Y2Yg==
@@ -2380,7 +2283,7 @@ exit@^0.1.2:
   resolved "http://npm.prakticum-team.ru/exit/-/exit-0.1.2.tgz"
   integrity sha512-Zk/eNKV2zbjpKzrsQ+n1G6poVbErQxJ0LBOJXaKZ1EViLzH+hrLu9cdXI4zw9dBQJslwBEpbQ2P1oS7nDxs6jQ==
 
-expect@^29.0.0, expect@^29.7.0:
+expect@^29.7.0:
   version "29.7.0"
   resolved "http://npm.prakticum-team.ru/expect/-/expect-29.7.0.tgz"
   integrity sha512-2Zks0hf1VLFYI1kbh0I5jP3KHHyCHpkfyHBzsSXRFgl/Bg9mWYfMW8oD+PdMPlEwy5HNsR9JutYy6pMeOh61nw==
@@ -3543,11 +3446,6 @@ jsonfile@^6.0.1:
   optionalDependencies:
     graceful-fs "^4.1.6"
 
-kareem@2.6.3:
-  version "2.6.3"
-  resolved "http://npm.prakticum-team.ru/kareem/-/kareem-2.6.3.tgz"
-  integrity sha512-C3iHfuGUXK2u8/ipq9LfjFfXFxAZMQJJq7vLS45r3D9Y2xQ/m4S8zaR4zMLFWh9AsNPXmcFfUDhTEO8UIC/V6Q==
-
 keyv@^4.5.3:
   version "4.5.4"
   resolved "http://npm.prakticum-team.ru/keyv/-/keyv-4.5.4.tgz"
@@ -3700,7 +3598,7 @@ methods@^1.1.2, methods@~1.1.2:
   resolved "http://npm.prakticum-team.ru/methods/-/methods-1.1.2.tgz"
   integrity sha512-iclAHeNqNm68zFtnZ0e+1L2yUIdvzNoauKU4WBA3VvH/vPFieF7qfRlwUZU+DA9P9bPXIS90ulxoUoCH23sV2w==
 
-micromatch@^4.0.0, micromatch@^4.0.4, micromatch@^4.0.8:
+micromatch@^4.0.4, micromatch@^4.0.8:
   version "4.0.8"
   resolved "http://npm.prakticum-team.ru/micromatch/-/micromatch-4.0.8.tgz"
   integrity sha512-PXwfBhYu0hBCPw8Dn0E+WDYb7af3dSLVWKi3HGv84IdF4TyFoC0ysxFd0Goxw7nSv4T/PzEJQxsYsEiFCKo2BA==
@@ -3802,7 +3700,7 @@ mongodb-connection-string-url@^3.0.0:
     "@types/whatwg-url" "^11.0.2"
     whatwg-url "^14.1.0 || ^13.0.0"
 
-"mongodb@^5.8.0 || ^6.0.0", mongodb@~6.15.0:
+"mongodb@^5.8.0 || ^6.0.0":
   version "6.15.0"
   resolved "http://npm.prakticum-team.ru/mongodb/-/mongodb-6.15.0.tgz"
   integrity sha512-ifBhQ0rRzHDzqp9jAQP6OwHSH7dbYIQjD3SbJs9YYk9AikKEettW/9s/tbSFDTpXcRbF+u1aLrhHxDFaYtZpFQ==
@@ -3810,31 +3708,6 @@ mongodb-connection-string-url@^3.0.0:
     "@mongodb-js/saslprep" "^1.1.9"
     bson "^6.10.3"
     mongodb-connection-string-url "^3.0.0"
-
-"mongoose@^7.0.0 || ^8.0.0", mongoose@^8.4.4:
-  version "8.13.2"
-  resolved "http://npm.prakticum-team.ru/mongoose/-/mongoose-8.13.2.tgz"
-  integrity sha512-riCBqZmNkYBWjXpM3qWLDQw7QmTKsVZDPhLXFJqC87+OjocEVpvS3dA2BPPUiLAu+m0/QmEj5pSXKhH+/DgerQ==
-  dependencies:
-    bson "^6.10.3"
-    kareem "2.6.3"
-    mongodb "~6.15.0"
-    mpath "0.9.0"
-    mquery "5.0.0"
-    ms "2.1.3"
-    sift "17.1.3"
-
-mpath@0.9.0:
-  version "0.9.0"
-  resolved "http://npm.prakticum-team.ru/mpath/-/mpath-0.9.0.tgz"
-  integrity sha512-ikJRQTk8hw5DEoFVxHG1Gn9T/xcjtdnOKIU1JTmGjZZlg9LST2mBLmcX3/ICIbgJydT2GOc15RnNy5mHmzfSew==
-
-mquery@5.0.0:
-  version "5.0.0"
-  resolved "http://npm.prakticum-team.ru/mquery/-/mquery-5.0.0.tgz"
-  integrity sha512-iQMncpmEK8R8ncT8HJGsGc9Dsp8xcgYMVSbs5jgnm1lFHTZqMJTUWTDx1LBO8+mK3tPNZWFLBghQEIOULSTHZg==
-  dependencies:
-    debug "4.x"
 
 ms@^2.1.3, ms@2.1.3:
   version "2.1.3"
@@ -4238,7 +4111,7 @@ prettier@^3.0.0, prettier@>=3.0.0:
   resolved "http://npm.prakticum-team.ru/prettier/-/prettier-3.5.3.tgz"
   integrity sha512-QQtaxnoDJeAkDvDKWCLiwIXkTgRhwYDEQCghU9Z6q03iyek/rxRh/2lC3HB7P8sWT2xC/y5JDctPLBIGzHKbhw==
 
-pretty-format@^29.0.0, pretty-format@^29.7.0:
+pretty-format@^29.7.0:
   version "29.7.0"
   resolved "http://npm.prakticum-team.ru/pretty-format/-/pretty-format-29.7.0.tgz"
   integrity sha512-Pdlw/oPxN+aXdmM9R00JVC9WVFoCLTKJvDVLgmJ+qAffBMxsV85l/Lu7sNx4zSzPyoL2euImuEwHhOXdEgNFZQ==
@@ -4434,7 +4307,7 @@ run-parallel@^1.1.9:
   dependencies:
     queue-microtask "^1.2.2"
 
-rxjs@^7.0.0, rxjs@^7.1.0, rxjs@^7.2.0, rxjs@^7.5.5, rxjs@^7.8.1:
+rxjs@^7.1.0, rxjs@^7.2.0, rxjs@^7.5.5, rxjs@^7.8.1:
   version "7.8.2"
   resolved "http://npm.prakticum-team.ru/rxjs/-/rxjs-7.8.2.tgz"
   integrity sha512-dhKf903U/PQZY6boNNtAGdWbG85WAbjT/1xYoZIC7FAY0yWapOBQVsVrDl58W86//e1VpMNBtRV4MaXfdMySFA==
@@ -4497,7 +4370,7 @@ semver@^6.3.1:
   resolved "http://npm.prakticum-team.ru/semver/-/semver-6.3.1.tgz"
   integrity sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==
 
-semver@^7.3.4, semver@^7.3.5, semver@^7.3.8, semver@^7.5.3, semver@^7.5.4, semver@^7.7.1:
+semver@^7.3.5, semver@^7.3.8, semver@^7.5.3, semver@^7.5.4, semver@^7.7.1:
   version "7.7.1"
   resolved "http://npm.prakticum-team.ru/semver/-/semver-7.7.1.tgz"
   integrity sha512-hlq8tAfn0m/61p4BVRcPzIGr6LKiMwo4VM6dGi6pt4qcRkmNzTcWq6eCEjEh+qXjkMDvPlOFFSGwQjoEa6gyMA==
@@ -4615,11 +4488,6 @@ side-channel@^1.0.6:
     side-channel-map "^1.0.1"
     side-channel-weakmap "^1.0.2"
 
-sift@17.1.3:
-  version "17.1.3"
-  resolved "http://npm.prakticum-team.ru/sift/-/sift-17.1.3.tgz"
-  integrity sha512-Rtlj66/b0ICeFzYTuNvX/EF1igRbbnGSvEyT79McoZa/DeGhMyC5pWKOEsZKnpkqtSeovd5FL/bjHWC3CIIvCQ==
-
 signal-exit@^3.0.2:
   version "3.0.7"
   resolved "http://npm.prakticum-team.ru/signal-exit/-/signal-exit-3.0.7.tgz"
@@ -4650,7 +4518,7 @@ slash@^3.0.0:
   resolved "http://npm.prakticum-team.ru/slash/-/slash-3.0.0.tgz"
   integrity sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==
 
-source-map-support@^0.5.21, source-map-support@~0.5.20:
+source-map-support@~0.5.20:
   version "0.5.21"
   resolved "http://npm.prakticum-team.ru/source-map-support/-/source-map-support-0.5.21.tgz"
   integrity sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w==
@@ -4676,7 +4544,7 @@ source-map@^0.6.1:
   resolved "http://npm.prakticum-team.ru/source-map/-/source-map-0.6.1.tgz"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
 
-source-map@^0.7.4, source-map@0.7.4:
+source-map@0.7.4:
   version "0.7.4"
   resolved "http://npm.prakticum-team.ru/source-map/-/source-map-0.7.4.tgz"
   integrity sha512-l3BikUxvPOcn5E74dZiq5BGsTb5yEwhaTSzccU6t4sDOH8NWJCstKO5QT2CvtFoK6F0saL7p9xHAqHOlCPJygA==
@@ -4966,17 +4834,6 @@ ts-jest@^29.1.0:
     type-fest "^4.38.0"
     yargs-parser "^21.1.1"
 
-ts-loader@^9.4.3:
-  version "9.5.2"
-  resolved "http://npm.prakticum-team.ru/ts-loader/-/ts-loader-9.5.2.tgz"
-  integrity sha512-Qo4piXvOTWcMGIgRiuFa6nHNm+54HbYaZCKqc9eeZCLRy3XqafQgwX2F7mofrbJG3g7EEb+lkiR+z2Lic2s3Zw==
-  dependencies:
-    chalk "^4.1.0"
-    enhanced-resolve "^5.0.0"
-    micromatch "^4.0.0"
-    semver "^7.3.4"
-    source-map "^0.7.4"
-
 ts-node@^10.7.0, ts-node@^10.9.1, ts-node@>=9.0.0:
   version "10.9.2"
   resolved "http://npm.prakticum-team.ru/ts-node/-/ts-node-10.9.2.tgz"
@@ -5006,7 +4863,7 @@ tsconfig-paths-webpack-plugin@4.2.0:
     tapable "^2.2.1"
     tsconfig-paths "^4.1.2"
 
-tsconfig-paths@^4.1.2, tsconfig-paths@^4.2.0, tsconfig-paths@4.2.0:
+tsconfig-paths@^4.1.2, tsconfig-paths@4.2.0:
   version "4.2.0"
   resolved "http://npm.prakticum-team.ru/tsconfig-paths/-/tsconfig-paths-4.2.0.tgz"
   integrity sha512-NoZ4roiN7LnbKn9QqE1amc9DJfzvZXxF4xDavcOWt1BPkdx+m+0gJuPM+S0vCe7zTJMYUP0R8pO2XMr+Y8oLIg==
@@ -5079,7 +4936,7 @@ typeorm@^0.3.0, typeorm@^0.3.22:
     uuid "^11.1.0"
     yargs "^17.7.2"
 
-typescript@*, typescript@^5.1.3, typescript@>=2.7, typescript@>=4.2.0, "typescript@>=4.3 <6", typescript@>=4.8.2, typescript@>=4.9.5, typescript@>3.6.0:
+typescript@^5.1.3, typescript@>=2.7, typescript@>=4.2.0, "typescript@>=4.3 <6", typescript@>=4.8.2, typescript@>=4.9.5, typescript@>3.6.0:
   version "5.8.2"
   resolved "http://npm.prakticum-team.ru/typescript/-/typescript-5.8.2.tgz"
   integrity sha512-aJn6wq13/afZp/jT9QZmwEjDqqvSGp1VT5GVg+f/t6/oVyrgXM6BY1h9BRh/O5p3PlUPAe+WuiEZOmb/49RqoQ==
@@ -5202,7 +5059,7 @@ webpack-sources@^3.2.3:
   resolved "http://npm.prakticum-team.ru/webpack-sources/-/webpack-sources-3.2.3.tgz"
   integrity sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==
 
-webpack@^5.0.0, webpack@^5.1.0, webpack@^5.11.0:
+webpack@^5.1.0, webpack@^5.11.0:
   version "5.98.0"
   resolved "http://npm.prakticum-team.ru/webpack/-/webpack-5.98.0.tgz"
   integrity sha512-UFynvx+gM44Gv9qFgj0acCQK2VE1CtdfwFdimkapco3hlPCJ/zeq73n2yVKimVbtm+TnApIugGhLJnkU6gjYXA==
