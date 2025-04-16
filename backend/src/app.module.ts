@@ -11,7 +11,7 @@ import { OrderService } from './order/order.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Film } from './films/entity/film.entity';
 import { Schedule } from './films/entity/schedule.entity';
-import { env } from 'node:process';
+import { config } from './config';
 
 @Module({
   imports: [
@@ -28,12 +28,12 @@ import { env } from 'node:process';
     //подключение к БД
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: env.DATABASE_USERNAME,
-      password: env.DATABASE_PASSWORD,
-      database: 'afisha',
-      schema: 'public',
+      host: config.db.host,
+      port: config.db.port,
+      username: config.db.user,
+      password: config.db.password,
+      database: config.db.name,
+      schema: config.db.schema,
       entities: [Film, Schedule],
       synchronize: true,
     }),
