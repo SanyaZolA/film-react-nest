@@ -19,7 +19,7 @@ export class DevLogger extends ConsoleLogger {
 
   private writeToFile(level: string, message: string) {
     const timestamp = new Date().toISOString();
-    const line = `[${timestamp}] [${level}] ${message}\n`;
+    const line = `[logger = DEV] [${timestamp}] [${level}] ${message}\n`;
     appendFileSync(this.logFile, line);
   }
 

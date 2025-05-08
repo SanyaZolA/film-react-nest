@@ -13,13 +13,10 @@ export class JsonLogger implements LoggerService {
     }
   }
 
-  private formatMessage(level: string, message: any, ...optionalParams: any[]) {
-    return JSON.stringify({ level, message, optionalParams });
-  }
-
   private writeToFile(level: string, message: any, ...optionalParams: any[]) {
     const timestamp = new Date().toISOString();
     const logEntry = {
+      logger: 'json',
       timestamp,
       level,
       message,
