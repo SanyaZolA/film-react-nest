@@ -10,4 +10,10 @@ export const config = {
   },
 };
 
-console.log(`Database config: ${JSON.stringify(config.db)}`);
+console.log('Database config:', {
+  host: config.db.host,
+  port: config.db.port,
+  user: config.db.user,
+  name: config.db.name,
+  schema: config.db.schema,
+});
