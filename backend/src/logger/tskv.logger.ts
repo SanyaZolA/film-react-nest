@@ -13,15 +13,15 @@ export class TSKVLogger implements LoggerService {
       timestamp: new Date().toISOString(),
       level,
       message,
-      context: this.extractContext(optionalParams) || '',
-      params: optionalParams.length > 0 ? optionalParams.join(', ') : '',
+      context: this.extractContext(optionalParams) || ' -',
+      params: optionalParams.length > 0 ? optionalParams.join(', ') : ' -',
     };
     return Object.entries(logObject)
       .map(([key, value]) => `${key}=${value}`)
       .join('\t');
   }
 
-  private extractContext(params: any[]): string | undefined {
+  private extractContext(params: string[]): string | undefined {
     if (params.length && typeof params[params.length - 1] === 'string') {
       return params.pop();
     }
@@ -34,24 +34,28 @@ export class TSKVLogger implements LoggerService {
     }
   }
 
-  private writeToFile(level: string, message: any, ...optionalParams: any[]) {
+  private writeToFile(
+    level: string,
+    message: string,
+    ...optionalParams: string[]
+  ) {
     const logMessage = this.formatMessage(level, message, ...optionalParams);
     appendFileSync(this.logFile, logMessage + '\n');
   }
 
-  log(message: any, ...optionalParams: any[]) {
+  log(message: string, ...optionalParams: string[]) {
     this.writeToFile('log', message, ...optionalParams);
   }
 
-  error(message: any, ...optionalParams: any[]) {
-    this.writeToFile('error', message, ...optionalParams);
-  }
-
-  warn(message: any, ...optionalParams: any[]) {
+  warn(message: string, ...optionalParams: string[]) {
     this.writeToFile('warn', message, ...optionalParams);
   }
 
-  debug(message: any, ...optionalParams: any[]) {
+  error(message: string, ...optionalParams: string[]) {
+    this.writeToFile('error', message, ...optionalParams);
+  }
+
+  debug(message: string, ...optionalParams: string[]) {
     this.writeToFile('debug', message, ...optionalParams);
   }
 }

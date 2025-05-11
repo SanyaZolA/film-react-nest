@@ -13,32 +13,36 @@ export class JsonLogger implements LoggerService {
     }
   }
 
-  private writeToFile(level: string, message: any, ...optionalParams: any[]) {
+  private writeToFile(
+    level: string,
+    message: string,
+    ...optionalParams: string[]
+  ) {
     const timestamp = new Date().toISOString();
     const logEntry = {
       logger: 'json',
       timestamp,
       level,
       message,
-      params: optionalParams.length > 0 ? optionalParams : undefined,
+      params: optionalParams.length > 0 ? optionalParams : ' -',
     };
 
     appendFileSync(this.logFile, JSON.stringify(logEntry) + '\n');
   }
 
-  log(message: any, ...optionalParams: any[]) {
+  log(message: string, ...optionalParams: string[]) {
     this.writeToFile('log', message, ...optionalParams);
   }
 
-  error(message: any, ...optionalParams: any[]) {
-    this.writeToFile('error', message, ...optionalParams);
-  }
-
-  warn(message: any, ...optionalParams: any[]) {
+  warn(message: string, ...optionalParams: string[]) {
     this.writeToFile('warn', message, ...optionalParams);
   }
 
-  debug?(message: any, ...optionalParams: any[]) {
+  error(message: string, ...optionalParams: string[]) {
+    this.writeToFile('error', message, ...optionalParams);
+  }
+
+  debug?(message: string, ...optionalParams: string[]) {
     this.writeToFile('debug', message, ...optionalParams);
   }
 }

@@ -1,10 +1,9 @@
 import { Injectable, ConflictException, Logger } from '@nestjs/common';
 import { OrderDto } from './dto/order.dto';
-import { FilmsRepository } from 'src/repository/films.repository';
+import { FilmsRepository } from '../repository/films.repository';
 
 @Injectable()
 export class OrderService {
-  // Массив для хранения заказов
   constructor(private readonly filmsRepository: FilmsRepository) {}
   private orders: OrderDto[] = [];
   private readonly logger = new Logger(OrderService.name);
