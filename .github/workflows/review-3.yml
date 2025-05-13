@@ -3,8 +3,7 @@ name: Build and Publish Docker Image
 on:
   push:
     branches:
-      - main  # или любая другая ветка, по которой вы хотите запускать сборку
-
+      - review-3
 jobs:
   build:
     runs-on: ubuntu-latest
