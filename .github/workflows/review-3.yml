@@ -34,7 +34,7 @@ jobs:
             context: ./backend
             file: ./backend/Dockerfile
             push: true
-            tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:backend-${{ github.sha }}
+            tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME | toLowerCase }}:backend-${{ github.sha }}
 
         - name: Build and push Frontend Docker image
           uses: docker/build-push-action@v2
@@ -42,4 +42,4 @@ jobs:
             context: ./frontend
             file: ./frontend/Dockerfile 
             push: true
-            tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:frontend-${{ github.sha }}
+            tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME | toLowerCase }}:frontend-${{ github.sha }}
