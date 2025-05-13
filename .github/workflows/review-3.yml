@@ -22,10 +22,18 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build Docker image
+      - name: Build frontend Docker image
         run: |
-          docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/sanyazola/your-image-name:latest .
-        
+          docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/sanyazola/film-react-nest/frontend:latest --push -f ./frontend/Dockerfile .
+
+      - name: Build backend Docker image
+        run: |
+          docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/sanyazola/film-react-nest/backend:latest --push -f ./backend/Dockerfile .
+
+      - name: Build nginx Docker image
+        run: |
+          docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/sanyazola/film-react-nest/nginx:latest --push -f ./nginx/Dockerfile .
+
       - name: Push Docker image
         run: |
           docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/sanyazola/your-image-name:latest --push .
