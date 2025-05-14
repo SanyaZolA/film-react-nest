@@ -1,67 +1,60 @@
-version: '3.8'
+version: "3.9"
 
 services:
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile.frontend
-    volumes:
-      - frontend-volume:/usr/share/nginx/html
-    depends_on:
-      - nginx
-    networks:
-      - app-network
-
   backend:
     build:
       context: ./backend
-      dockerfile: Dockerfile.backend
+    container_name: backend
+    ports:
+      - "3000:3000" # только если нужно напрямую
     depends_on:
       - postgres
-    environment:
-      - DATABASE_HOST=db
-      - DATABASE_PORT=5432
-      - DATABASE_NAME=mydb
-      - DATABASE_USER=postgres
-      - DATABASE_PASSWORD=example
     networks:
       - app-network
 
-  nginx:
+  frontend:
     build:
       context: ./nginx
-      dockerfile: Dockerfile
+    container_name: nginx
     volumes:
-      - frontend-volume:/usr/share/nginx/html
+      - ./frontend/dist:/usr/share/nginx/html
     ports:
       - "80:80"
+    depends_on:
+      - backend
     networks:
       - app-network
-  
+
   postgres:
-    image: postgres:13
+    image: postgres:15
+    container_name: postgres
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=example
-      - POSTGRES_DB=mydb
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: myapp
     volumes:
-      - db-data:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
     networks:
       - app-network
-  
+
   pgadmin:
     image: dpage/pgadmin4
+    container_name: pgadmin
     environment:
-      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
-      - PGADMIN_DEFAULT_PASSWORD=admin
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin
     ports:
       - "8080:80"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    depends_on:
+      - postgres
     networks:
       - app-network
 
 volumes:
-  frontend-volume:
-  db-data:
+  pgdata:
+  pgadmin-data:
 
 networks:
   app-network:

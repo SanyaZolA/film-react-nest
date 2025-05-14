@@ -1,20 +1,36 @@
-# Используем образ Node.js
-FROM node:16
+# Этап сборки
+FROM node:20 AS build
 
+# Установка рабочих директорий
 WORKDIR /app
 
-# Копируем package.json и устанавливаем зависимости
-COPY package*.json ./
-RUN npm install
+# Копирование package.json и package-lock.json для установки зависимостей
+COPY package.json package-lock.json ./
+RUN npm ci --legacy-peer-deps
 
-# Копируем все остальные файлы проекта
+# Копирование исходного кода приложения
 COPY . .
 
-# Выполняем сборку
-RUN npm run build
+# Сборка приложения (для TypeScript)
+RUN npm run build  # Этот скрипт должен собирать код в папку dist
 
-# Убедитесь, что файлы сборки находятся в /app/dist
-RUN ls -al /app/dist
+# Этап продакшн
+FROM node:16 AS production
 
-# Запускаем приложение в продакшен-режиме
+# Установка рабочей директории для продакшен кода
+WORKDIR /app
+
+# Копирование только продакшенных зависимостей из первого этапа
+COPY --from=build /app/package.json /app/package-lock.json ./
+RUN npm install --production
+
+# Копирование собранного кода из dist
+COPY --from=build /app/dist /app/dist
+
+# Копирование конфигураций и других файлов (если нужно)
+
+# Открытие порта, который будет использоваться бэкендом (например, 3000)
+EXPOSE 3000
+
+# Запуск бэкенда с использованием только продакшен кода
 CMD ["node", "dist/main.js"]
