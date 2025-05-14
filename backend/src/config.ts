@@ -3,9 +3,9 @@ export const config = {
   db: {
     host: process.env.DATABASE_HOST || 'postgres',
     port: parseInt(process.env.DATABASE_PORT || '5432', 10),
-    user: process.env.DATABASE_USER || 'admin',
-    password: process.env.DATABASE_PASSWORD || 'admin',
-    name: process.env.DATABASE_NAME || 'films',
+    user: process.env.DATABASE_USER || '1',
+    password: process.env.DATABASE_PASSWORD || '2',
+    name: process.env.DATABASE_NAME || 'afisha',
     schema: process.env.DATABASE_SCHEMA || 'public',
   },
 };

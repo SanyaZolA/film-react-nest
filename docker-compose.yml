@@ -1,61 +1,76 @@
-version: "3.9"
-
 services:
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend-container   # Имя контейнера для фронтенда
+    volumes:
+      - frontend-dist:/app/dist
+    networks:
+      - network
+    environment:
+      - NODE_ENV=production
+    command: sh -c "npm run build && tail -f /dev/null"
+
   backend:
     build:
       context: ./backend
-    container_name: backend
+    container_name: backend-container   # Имя контейнера для бэкенда
     ports:
-      - "3000:3000" # только если нужно напрямую
-    depends_on:
-      - postgres
+      - "3000:${BACKEND_PORT}"
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: ${POSTGRES_USER}
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+      DB_NAME: ${POSTGRES_DB}
     networks:
-      - app-network
-
-  frontend:
-    build:
-      context: ./nginx
-    container_name: nginx
+      - network
     volumes:
-      - ./frontend/dist:/usr/share/nginx/html
-    ports:
-      - "80:80"
-    depends_on:
-      - backend
-    networks:
-      - app-network
+      - backend-dist:/app/dist
 
   postgres:
-    image: postgres:15
-    container_name: postgres
+    image: postgres:16
+    restart: always
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin
-      POSTGRES_DB: myapp
+      POSTGRES_USER: 1
+      POSTGRES_PASSWORD: 2
+      POSTGRES_DB: afisha
+      POSTGRES_SHEMA: public
     volumes:
       - pgdata:/var/lib/postgresql/data
     networks:
-      - app-network
-
+      - network
+    ports:
+      - "5432:5432"
   pgadmin:
     image: dpage/pgadmin4
-    container_name: pgadmin
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@example.com
-      PGADMIN_DEFAULT_PASSWORD: admin
+    restart: always
     ports:
-      - "8080:80"
-    volumes:
-      - pgadmin-data:/var/lib/pgadmin
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
     depends_on:
       - postgres
     networks:
-      - app-network
+      - network
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./frontend/dist:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - frontend
+      - backend
 
 volumes:
+  frontend-dist:  # Это volume для фронтенда, чтобы раздавать файлы через Nginx
+  backend-dist:
   pgdata:
-  pgadmin-data:
 
 networks:
-  app-network:
+  network:  # Создаём сеть с названием mynetwork
     driver: bridge
