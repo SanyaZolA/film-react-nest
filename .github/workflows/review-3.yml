@@ -24,16 +24,12 @@ jobs:
 
       - name: Build frontend Docker image
         run: |
-          docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/sanyazola/film-react-nest/frontend:latest --push -f ./frontend/Dockerfile.frontend .
+          docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/sanyazola/film-react-nest/frontend:latest --push -f ./frontend/Dockerfile .
 
       - name: Build backend Docker image
         run: |
-          docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/sanyazola/film-react-nest/backend:latest --push -f ./backend/Dockerfile.backend .
-
-      - name: Build nginx Docker image
-        run: |
-          docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/sanyazola/film-react-nest/nginx:latest --push -f ./nginx/Dockerfile .
+          docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/sanyazola/film-react-nest/backend:latest --push -f ./backend/Dockerfile .
 
       - name: Push Docker image
         run: |
-          docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/sanyazola/your-image-name:latest --push .
+          docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/sanyazola/film-react-nest:latest --push .
