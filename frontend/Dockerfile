@@ -1,12 +1,10 @@
-FROM node:20
+FROM node:18-alpine
 
 WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install @rollup/rollup-linux-x64-gnu 
-
-RUN npm install
+RUN npm ci
 
 COPY . .
 
