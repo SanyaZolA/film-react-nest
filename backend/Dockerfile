@@ -4,7 +4,9 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm i
+RUN rm -rf node_modules package-lock.json
+
+RUN npm install --omit=optional
 
 COPY . .
 
