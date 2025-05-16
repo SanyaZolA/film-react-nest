@@ -29,7 +29,3 @@ jobs:
       - name: Build backend Docker image
         run: |
           docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/sanyazola/film-react-nest/backend:latest --push -f ./backend/Dockerfile ./backend
-
-      - name: Push Docker image
-        run: |
-          docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/sanyazola/film-react-nest:latest --push .
