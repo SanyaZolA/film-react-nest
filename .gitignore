@@ -3,4 +3,3 @@ dist
 build
 .git
 .env
-package-lock.json
