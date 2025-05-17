@@ -1,14 +1,16 @@
 services:
   frontend:
     image: ghcr.io/sanyazola/film-react-nest/frontend:latest
+    build:
+      context: ./frontend
     container_name: frontend-container
-    volumes:
-      - frontend-dist:/app/dist
     networks:
       - network
 
   backend:
     image: ghcr.io/sanyazola/film-react-nest/backend:latest
+    build:
+      context: ./backend
     container_name: backend-container
     volumes:
       - backend-dist:/app/dist
@@ -26,11 +28,10 @@ services:
       LOGGER_TYPE: ${LOGGER_TYPE}
     depends_on:
       postgres:
-        condition: service_healthy
+      condition: service_healthy
   postgres:
     image: postgres:16
     restart: always
-    container_name: postgres-container
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -49,7 +50,6 @@ services:
   pgadmin:
     image: dpage/pgadmin4
     restart: always
-    container_name: pgadmin-container
     ports:
       - "8080:80"
     environment:
@@ -62,7 +62,6 @@ services:
 
   nginx:
     image: nginx:alpine
-    container_name: nginx-container
     ports:
       - "80:80"
     volumes:
