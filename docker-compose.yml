@@ -8,7 +8,6 @@ services:
       - frontend-dist:/app/dist
     networks:
       - network
-    command: sh -c "npm run build && tail -f /dev/null"
 
   backend:
     image: ghcr.io/sanyazola/film-react-nest/backend:latest
@@ -29,6 +28,9 @@ services:
       DATABASE_NAME: ${DATABASE_NAME}
       DATABASE_SCHEMA: ${DATABASE_SCHEMA}
       LOGGER_TYPE: ${LOGGER_TYPE}
+    depends_on:
+      postgres:
+        condition: service_healthy
   postgres:
     image: postgres:16
     restart: always
@@ -42,6 +44,11 @@ services:
       - network
     ports:
       - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
   pgadmin:
     image: dpage/pgadmin4
     restart: always
