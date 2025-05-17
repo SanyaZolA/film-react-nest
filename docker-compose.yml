@@ -1,8 +1,6 @@
 services:
   frontend:
     image: ghcr.io/sanyazola/film-react-nest/frontend:latest
-    build:
-      context: ./frontend
     container_name: frontend-container
     volumes:
       - frontend-dist:/app/dist
@@ -11,8 +9,6 @@ services:
 
   backend:
     image: ghcr.io/sanyazola/film-react-nest/backend:latest
-    build:
-      context: ./backend
     container_name: backend-container
     volumes:
       - backend-dist:/app/dist
