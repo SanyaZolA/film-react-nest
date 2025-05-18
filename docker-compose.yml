@@ -29,8 +29,10 @@ services:
     depends_on:
       postgres:
       condition: service_healthy
+
   postgres:
     image: postgres:16
+    container_name: postgres-container
     restart: always
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
@@ -49,6 +51,7 @@ services:
       retries: 5
   pgadmin:
     image: dpage/pgadmin4
+    container_name: pgadmin-container
     restart: always
     ports:
       - "8080:80"
@@ -62,6 +65,7 @@ services:
 
   nginx:
     image: nginx:alpine
+    container_name: nginx-container
     ports:
       - "80:80"
     volumes:
