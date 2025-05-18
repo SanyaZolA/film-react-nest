@@ -1,14 +1,15 @@
 services:
   frontend:
-    image: ghcr.io/sanyazola/film-react-nest/frontend:latest
     build:
       context: ./frontend
     container_name: frontend-container
+    volumes:
+      - frontend-dist:/app/dist
     networks:
       - network
+    command: sh -c "npm run build && tail -f /dev/null"
 
   backend:
-    image: ghcr.io/sanyazola/film-react-nest/backend:latest
     build:
       context: ./backend
     container_name: backend-container
@@ -26,9 +27,6 @@ services:
       DATABASE_NAME: ${DATABASE_NAME}
       DATABASE_SCHEMA: ${DATABASE_SCHEMA}
       LOGGER_TYPE: ${LOGGER_TYPE}
-    depends_on:
-      postgres:
-      condition: service_healthy
 
   postgres:
     image: postgres:16
@@ -44,11 +42,6 @@ services:
       - network
     ports:
       - "5432:5432"
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
   pgadmin:
     image: dpage/pgadmin4
     container_name: pgadmin-container
@@ -68,8 +61,9 @@ services:
     container_name: nginx-container
     ports:
       - "80:80"
+      - 443:443
     volumes:
-      - ./frontend-dist:/usr/share/nginx/html:ro
+      - frontend-dist:/usr/share/nginx/html:ro
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
       - frontend
