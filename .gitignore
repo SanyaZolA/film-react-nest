@@ -1,2 +1,8 @@
 node_modules
-.idea
+dist
+build
+.git
+.env
+node_modules
+dist
+.env
