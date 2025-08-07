@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Film } from '../films/entity/film.entity';
 import { filmsDTO } from '../films/dto/films.dto';
-import { Schedule } from 'src/films/entity/schedule.entity';
+import { Schedule } from '../films/entity/schedule.entity';
 
 @Injectable()
 export class FilmsRepository {

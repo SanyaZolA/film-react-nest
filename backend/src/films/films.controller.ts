@@ -1,6 +1,7 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { FilmsService } from '../films/films.service';
 import { filmsDTO } from './dto/films.dto';
+import { ScheduleResponseDto } from './dto/schedule.dto';
 
 @Controller('films')
 export class FilmsController {
@@ -10,7 +11,7 @@ export class FilmsController {
     return this.filmsService.findAll();
   }
   @Get(':id/schedule')
-  find(@Param('id') id: string) {
+  find(@Param('id') id: string): Promise<ScheduleResponseDto> {
     return this.filmsService.findById(id);
   }
 }
