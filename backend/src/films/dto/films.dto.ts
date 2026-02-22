@@ -1,6 +1,6 @@
 import { filmsScheduleDTO } from './schedule.dto';
 
-export class filmsDTO {
+export class filmsDTO { //
   id: string;
   rating: number;
   director: string;

@@ -1,7 +1,7 @@
 export const config = {
   port: process.env.PORT || 3000,
   db: {
-    host: process.env.DATABASE_HOST || 'postgres',
+    host: process.env.DATABASE_HOST,
     port: parseInt(process.env.DATABASE_PORT || '5432', 10),
     user: process.env.DATABASE_USER || 'user',
     password: process.env.DATABASE_PASSWORD || 'password',
