@@ -1,6 +1,5 @@
-@use 'variables' as *;
-@use 'mixins';
-
+@use '../../scss/variables' as *;
+@use '../../scss/mixins';
 .form {
   @include mixins.flex(column);
   gap: 1.5rem;
